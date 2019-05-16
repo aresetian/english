@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Bootstrap 3, from LayoutIt!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!--link rel="stylesheet/less" href="less/bootstrap.less" type="text/css" /-->
+    <!--link rel="stylesheet/less" href="less/responsive.less" type="text/css" /-->
+    <!--script src="js/less-1.3.3.min.js"></script-->
+    <!--append ‘#!watch’ to the browser URL, then refresh the page. -->
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="img/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="img/favicon.png">
+
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/scripts.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript">
+        var questions1 = new Array("What is the noun of the verb Invent", "invention" );
+        var questions2 = new Array("What is the noun of the verb Observe", "observation" );
+        var questions1 = new Array("What is the noun of the verb Invent", "invention" );
+        var employees = [
+            { "question" : "Question", "answer" : "answer"},
+            { "question" : "What is the noun of the verb Invent", "answer" : "invention"},
+            { "question" : "What is the noun of the verb Observe", "answer" : "observation"},
+
+        ];
+
+        var answerdValid = "";
+
+        $(document).ready(function () {
+            $("#btn_Seeq").click(function(){
+                //alert(answerdValid);
+                var value = document.getElementById('inputEmail3').value;
+                document.getElementById('lbltipAddedCommentckeck').innerHTML = value + "Your anwers"
+                document.getElementById('lbltipAddedCommentanswer').innerHTML = answerdValid + "Correct andwers"
+            });
+        });
+        $(document).ready(function () {
+            $("#btn_Nextq").click(function(){
+                ;
+                var value = Math.floor((Math.random() * employees.length) + 1)
+                document.getElementById('lbltipAddedComment').innerHTML = employees[value].question;
+                answerdValid =employees[value].answer
+                document.getElementById('lbltipAddedCommentanswer').innerHTML = ""
+                document.getElementById('lbltipAddedCommentckeck').innerHTML = ""
+            });
+
+
+
+
+        });
+
+        $(document).ready(function () {
+            $("#btn_Checkq").click(function(){
+                var value = document.getElementById('inputEmail3').value;
+                if(value.trim().toLowerCase() === answerdValid){
+                    document.getElementById('lbltipAddedCommentckeck').innerHTML = "Correct"
+                }else{
+                    document.getElementById('lbltipAddedCommentckeck').innerHTML = "Wrong"
+                }
+
+            });
+
+
+
+
+        });
+
+        function getAllEmployeesFilteredBy(filterName, filterValue, empArray)
+        {
+
+            var x = document.getElementById("demo")
+            x.innerHTML = Math.floor((Math.random() * 100) + 1);
+            var result = [];
+            for (var i=0; i < empArray.length; i++) {
+                if (empArray[i][filterName] === filterValue)
+                //by ref
+                    result[result.length] = empArray[i];
+
+                //or if you prefer by value (different object altogether)
+                //result[result.length] = { "firstName" : empArray[i].firstName, "lastName" : empArray[i].lastName, ... }
+            }
+            return result;
+        }
+    </script>
+</head>
+
+<body>
+<div class="container">
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+
+
+                <div class="form-group">
+                    <h3>
+                        h3. what is the name.
+                    </h3>
+                    <label id="lbltipAddedComment">test</label>
+                </div>
+                <div class="form-group">
+
+                    <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+                    <div class="col-sm-10">
+                        <input type="email" class="form-control" id="inputEmail3">
+                        <label id="lbltipAddedCommentckeck"></label>
+                        <label id="lbltipAddedCommentanswer"></label>
+                    </div>
+                </div>
+
+
+
+        </div>
+    </div>
+    <div class="row clearfix">
+        <div class="col-md-6 column">
+            <button type="submit" id="btn_Checkq"  class="btn btn-default">Check</button>
+            <button type="submit" id="btn_Seeq" class="btn btn-default">See Answer</button>
+            <button type="submit" id="btn_Nextq"   class="btn btn-default">Next</button>
+        </div>
+
+    </div>
+
+</div>
+</body>
+</html>

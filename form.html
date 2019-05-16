@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <script language="javascript" type="text/javascript">
+        function myFunction(pCorrectAnwser, pIdElement , pIdLabel ) {
+            var value = document.getElementById(pIdElement).value;
+            if(value.trim().toLowerCase() === pCorrectAnwser){
+                document.getElementById(pIdLabel).innerHTML = "Correct3"
+            }else{
+                document.getElementById(pIdLabel).innerHTML = "Wrong2"
+            }
+        }
+    </script>
+</head>
+<body>
+It's a long time since you didn't write to me:<br/>
+<input id="answer1" type="text" name="answer1">
+<br/>
+<label id="label1"></label>
+<br/>
+<button type="button" id="btn1" onclick="myFunction('It'.trim().toLowerCase(), 'answer1', 'label1');">Check</button>
+
+
+</body>
+</html>
